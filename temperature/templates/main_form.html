@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% block content %}
+<div class="container">
+    <div class="row my-3">
+        <div class="col-md-12">
+            <div class="alert alert-danger error-msg" style="display:none">
+                <ul></ul>
+            </div>
+            <form action="" method="post" class="form" id="main-form">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <button type="submit" class="btn btn-primary">Show data</button>
+            </form>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div id="empty-data" class="alert alert-warning" role="alert" style="display:none">
+            Sorry, no data
+        </div>
+        <div id="container" style="width: 75%;">
+            <canvas id="temperature-chart"></canvas>
+        </div>
+    </div>
+    <script src="{% static 'js/main_form.js' %}"></script>
+</div>
+{% endblock %}
